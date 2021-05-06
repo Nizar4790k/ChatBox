@@ -1,0 +1,27 @@
+body {
+	background: #E5DDD5 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+}
+.page-header {
+	background: #006A4E;
+	margin: 0;
+  padding: 20px 0 10px;
+	color: #FFFFFF;
+	position: fixed;
+	width: 100%;
+  z-index: 1
+}
+.main {
+	height: 100vh;
+	padding-top: 70px;
+}
+
+
+
+.chat-form {
+	background: #DDDDDD;
+	padding: 40px 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+

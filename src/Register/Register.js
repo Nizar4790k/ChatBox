@@ -55,7 +55,7 @@ const Login = () => {
 
             <div className="form-signin" >
                 <h1 className="form-signin-heading">Welcome to ChatBox!</h1>
-                <h4 >Please Register</h4>
+                <h4 >Please register</h4>
                 <input type="text" id="username" className="form-control" name="username" placeholder="Username" required="" autoFocus="" maxLength="10" />
                 <br></br>
                 
@@ -66,7 +66,7 @@ const Login = () => {
                 
                 <br></br>
                 <br></br>
-                <button type="button" class="btn btn-link" onClick={()=>{history.push("/")}}>Log in</button>
+                <button type="button" class="btn btn-link" onClick={()=>{history.push("/Login")}}>Log in</button>
                 
             </div>
             
