@@ -9,7 +9,6 @@ const ChatBox = () => {
 
         <div>
             <NavBar/>
-
             <div class="main">
                 <div class="container ">
                    <ChatLog></ChatLog>

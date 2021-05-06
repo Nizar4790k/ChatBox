@@ -6,19 +6,19 @@ import "./Login.css";
 
 const Login = () => {
 
-    const [username,setUser]=useState(null);
-    const [password,setPassword] = useState(null);
+    
 
     const history = useHistory();
 
    const authenticate = () =>{
 
 
-    setUser(document.getElementById("username").value);
-    setPassword(document.getElementById("password").value);
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
     if (username==="Nizar" && password==="123"){
         alert("Success")
+        history.push("ChatBox")
     }else{
         alert("Bad credentials")
     }
