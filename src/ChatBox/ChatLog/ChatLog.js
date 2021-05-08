@@ -4,7 +4,7 @@ const ChatLog = ()=>{
 
     return(
         
-     <div class="chat-log">
+     <div className="chat-log">
         <ChatLogItem></ChatLogItem>
 
     </div>

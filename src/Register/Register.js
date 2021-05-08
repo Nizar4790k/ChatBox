@@ -1,20 +1,25 @@
 // import axios from 'axios';
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import "./Register.css";
 
 
 const Register = () => {
 
-    
+    const [password,setPassword] = useState("");
+    const [username,setUserName]= useState("");
 
     const history = useHistory();
 
-    const authenticate =  () => {
+    const sendForm =  () => {
 
-
-        var username = document.getElementById("username").value;
-        var password =document.getElementById("password").value;
+        
+        if(!username || !password ){
+            alert("The fields can't be empty");
+            return;
+        }
+        
         
 
         fetch('http://localhost:3001/register', {
@@ -27,15 +32,7 @@ const Register = () => {
         })
             .then(response =>response.json())
             .then(result=>{
-                /*
-                if(result==="USER_EXIST"){
-                    alert("The user exist");
-                }else if(result==="USER_INSERTED"){
-                    alert("User created suscessfully")
-                    history.push("/Login");
-                }
-                */
-
+                
                 switch(result){
                     case "USER_EXIST":
                         alert("The user exist");
@@ -44,6 +41,9 @@ const Register = () => {
                         alert("User created suscessfully")
                         history.push("/Login");
                         break;
+                    case "EMPTY_FIELDS":
+                        alert("The field(s) can't be empty");
+                        break;   
                      default:
                          alert("ERROR IN THE SERVER");
                          break;   
@@ -52,27 +52,16 @@ const Register = () => {
 
     }
 
-    /*
-   
 
-        let regex = new RegExp("[A-Za-z0-9_]");
+    const onUserChange=(e)=>{
+        setUserName(e.target.value)
+    }
 
-        
-        axios.post("http://localhost:4000/login",{username,password})
-        .then(response=>{
+    const onPasswordChange=(e)=>{
+        setPassword(e.target.value)
+    }
 
-            if(response.data.success){
-                history.push("/ItemList");
-            }else{
-                alert("User and password may be not correct");
-                attemps++;
-                alert("Attemps to Log In remainings"+(3-attemps));
-            }
-
-
-        });
-    */
-
+    
 
 
 
@@ -84,13 +73,13 @@ const Register = () => {
             <div className="form-signin" >
                 <h1 className="form-signin-heading">Welcome to ChatBox!</h1>
                 <h4 >Please register</h4>
-                <input type="text" id="username" className="form-control" name="username" placeholder="Username" required="" autoFocus="" maxLength="10" />
+                <input type="text" id="username" className="form-control" name="username" placeholder="Username" onChange={onUserChange} autoFocus=""  />
                 <br></br>
 
-                <input type="password" id="password" className="form-control" name="password" placeholder="Password" required="" />
+                <input type="password" id="password" className="form-control" name="password" placeholder="Password" onChange={onPasswordChange} required />
 
                 <br></br>
-                <button className="btn btn-lg btn-success btn-block" onClick={() => { authenticate() }}>Register</button>
+                <button className="btn btn-lg btn-success btn-block" onClick={()=>{sendForm()}}>Register</button>
 
                 <br></br>
                 <br></br>

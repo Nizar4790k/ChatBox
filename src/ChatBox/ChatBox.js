@@ -9,8 +9,8 @@ const ChatBox = () => {
 
         <div>
             <NavBar/>
-            <div class="main">
-                <div class="container ">
+            <div className="main">
+                <div className="container ">
                    <ChatLog></ChatLog>
                 </div>
                <ChatForm></ChatForm>

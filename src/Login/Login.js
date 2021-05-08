@@ -1,47 +1,70 @@
-
-
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 
 
 const Login = () => {
 
+    const[username,setUserName]=useState("");
+    const[password,setPassword] = useState("");
     
 
 const history = useHistory();
 
    const authenticate = () =>{
 
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    if (username==="Nizar" && password==="123"){
-        alert("Success")
-        history.push("ChatBox")
-    }else{
-        alert("Bad credentials")
-    }
+     if(!username || !password ){
+        alert("The credentials are wrong");
+            return;
+        }
+      
+    fetch('http://localhost:3001/login', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    })
+        .then(response =>response.json())
+        .then(result=>{
+            
+            switch(result){
+                case "ACCESS_DENIED":
+                    alert("The credentials are wrong");
+                    break;
+                case "ACCESS_GRANTED":
+                    history.push("/ChatBox");
+                    break;
+                 default:
+                     alert("ERROR IN THE SERVER");
+                     break;   
+            }
+        });
     
-    
     }
 
+    const onUserChange=(e)=>{
+        setUserName(e.target.value)
+    }
+
+    const onPasswordChange=(e)=>{
+        setPassword(e.target.value)
+    }
 
     return (
-
-        
         <div className="wrapper">
 
             <div className="form-signin" >
                 <h1 className="form-signin-heading">Welcome to ChatBox!</h1>
                 <h4 >Please login</h4>
-                <input type="text" id="username" className="form-control" name="username" placeholder="Username" required="" autoFocus="" maxLength="10" />
+                <input type="text" id="username" className="form-control" name="username" onChange={onUserChange} placeholder="Username" required="" autoFocus="" maxLength="10" />
                 <br></br>
                 
-                <input type="password" id="password" className="form-control" name="password" placeholder="Password" required="" />
+                <input type="password" id="password" className="form-control" onChange={onPasswordChange} name="password" o placeholder="Password" required="" />
                 
                 <br></br>
-                <button className="btn btn-lg btn-primary btn-block" onClick={authenticate}>Login</button>
+                <button className="btn btn-lg btn-primary btn-block" onClick={()=>{authenticate()}}>Login</button>
                 
                 <br></br>
                 <br></br>
@@ -51,9 +74,6 @@ const history = useHistory();
             
 
         </div>
-
-
-
 
 
     );
