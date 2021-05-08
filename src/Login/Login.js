@@ -58,10 +58,10 @@ const history = useHistory();
             <div className="form-signin" >
                 <h1 className="form-signin-heading">Welcome to ChatBox!</h1>
                 <h4 >Please login</h4>
-                <input type="text" id="username" className="form-control" name="username" onChange={onUserChange} placeholder="Username" required="" autoFocus="" maxLength="10" />
+                <input type="text" id="username" className="form-control" name="username" onChange={onUserChange} placeholder="Username"  autoFocus=""  />
                 <br></br>
                 
-                <input type="password" id="password" className="form-control" onChange={onPasswordChange} name="password" o placeholder="Password" required="" />
+                <input type="password" id="password" className="form-control" onChange={onPasswordChange} name="password"  placeholder="Password"  />
                 
                 <br></br>
                 <button className="btn btn-lg btn-primary btn-block" onClick={()=>{authenticate()}}>Login</button>
