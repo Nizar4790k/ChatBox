@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-
+import config from '../../src/config';
 
 const Login = () => {
 
     const[username,setUserName]=useState("");
     const[password,setPassword] = useState("");
-    
+    console.log(config[process.env.NODE_ENV].endpoint)    
 
 const history = useHistory();
 
    const authenticate = () =>{
+
+    console.log (config[process.env.NODE_ENV].endpoint)
 
      if(!username || !password ){
         alert("The credentials are wrong");

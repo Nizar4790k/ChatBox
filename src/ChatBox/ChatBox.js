@@ -3,7 +3,9 @@ import NavBar from "../NavBar/NavBar"
 import ChatLog from "./ChatLog/ChatLog"
 import ChatForm from "./ChatForm/ChatForm"
 
-const ChatBox = () => {
+const ChatBox = ({userName}) => {
+
+    
 
     return (
 
@@ -11,7 +13,7 @@ const ChatBox = () => {
             <NavBar/>
             <div className="main">
                 <div className="container ">
-                   <ChatLog></ChatLog>
+                   <ChatLog userName={userName}></ChatLog>
                 </div>
                <ChatForm></ChatForm>
             </div>
