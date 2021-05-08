@@ -1,5 +1,5 @@
-// import axios from 'axios';
-import React, { useState } from 'react';
+
+
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 
@@ -8,7 +8,7 @@ const Login = () => {
 
     
 
-    const history = useHistory();
+const history = useHistory();
 
    const authenticate = () =>{
 
@@ -23,27 +23,6 @@ const Login = () => {
         alert("Bad credentials")
     }
     
-        
-    /*
-   
-
-        let regex = new RegExp("[A-Za-z0-9_]");
-
-        
-        axios.post("http://localhost:4000/login",{username,password})
-        .then(response=>{
-
-            if(response.data.success){
-                history.push("/ItemList");
-            }else{
-                alert("User and password may be not correct");
-                attemps++;
-                alert("Attemps to Log In remainings"+(3-attemps));
-            }
-
-
-        });
-    */
     
     }
 
@@ -67,7 +46,7 @@ const Login = () => {
                 <br></br>
                 <br></br>
                 
-                <button type="button" class="btn btn-link" onClick={()=>{history.push("/Register")}}>Register</button>
+                <button type="button" className="btn btn-link" onClick={()=>{history.push("/Register")}}>Register</button>
             </div>
             
 
