@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./Login.css";
 
 
-const Login = () => {
+const Login = ({onLoadUserName}) => {
 
     const[username,setUserName]=useState("");
     const[password,setPassword] = useState("");
@@ -37,6 +37,7 @@ const history = useHistory();
                     break;
                 case "ACCESS_GRANTED":
                     history.push("/ChatBox");
+                    onLoadUserName(username);
                     break;
                  default:
                      alert("ERROR IN THE SERVER");

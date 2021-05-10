@@ -51,6 +51,7 @@ const ChatBox = ({userName}) => {
     const onSubmitMessage = (event)=>{
         event.preventDefault()
 
+        console.log(userName);
         
 
         if(currentText==="" || currentText===null){

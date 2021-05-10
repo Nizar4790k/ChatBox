@@ -10,10 +10,10 @@ import { useState } from 'react';
 
 function App() {
   
-   const [userName,setUserName]=useState("Nizar")
+   const [userName,setUserName]=useState("")
 
 
-   function onLoadUserName(userName){
+    const onLoadUserName=(userName)=>{
     setUserName(userName)
    }
 
