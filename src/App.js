@@ -22,7 +22,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-          
           <Switch>
           <Route path="/Login" component={()=><Login onLoadUserName={onLoadUserName}/>}></Route>
             <Route path="/Register" exact component={Register}></Route>
