@@ -7,7 +7,7 @@ export default function useWindowPosition(id){
         function updatePosition() {
             const offsetSetHeight = window.document.getElementById(id).offsetHeight;
             console.log('windowPageOffset', window.pageYOffset, offsetSetHeight);
-            if (offsetSetHeight * 0.7 < window.pageYOffset) {
+            if (window.pageYOffset > offsetSetHeight * 0.7) {
                 setAnimation(true);
             }
         };
