@@ -4,18 +4,19 @@ import ChatLog from "./ChatLog/ChatLog"
 import ChatForm from "./ChatForm/ChatForm"
 import config from '../config';
 import { useEffect, useState } from "react";
-import io from "socket.io-client";
+import useWindowPosition from "../hooks/useWindowPosition";
+/* import io from "socket.io-client"; */
 
 const ChatBox = ({userName}) => {
-
     
+    useWindowPosition('chatbox');
     const [messages,setMessages]=useState([]);
 
     const [currentText, setCurrentText]= useState("")
     const[textbox,setTextBox]=useState("")
     
-    const server = config[process.env.NODE_ENV].endpoint;
-    const socket = io(server);
+/*     const server = config[process.env.NODE_ENV].endpoint;
+    const socket = io(server); */
 
     
     
@@ -23,28 +24,29 @@ const ChatBox = ({userName}) => {
        
         const fetchMessages = async()=>{
 
-            const response = await fetch("http://localhost:3001/messages");
+            /* const response = await fetch("http://localhost:3001/messages");
             const result = await response.json();
-            setMessages(result)
+            setMessages(result) */
             
         }
 
         fetchMessages()
        
-        socket.on('init',(messages)=>{
+       /*  socket.on('init',(messages)=>{
             let messagesReversed = messages.reverse();
             setMessages(messagesReversed)
-        })
+        }) */
         
         
 
-        socket.on('push',(newMessages)=>{
-            setMessages(newMessages)
+       /*  socket.on('push',(newMessages)=>{
+            setMessages(newMessages) */
             
             
-        });
+        //});
 
-       
+       let message = document.querySelector("#chatbox");
+       message.scrollTop = message.scrollHeight - message.clientHeight;
         
         
         
@@ -70,27 +72,23 @@ const ChatBox = ({userName}) => {
         }
 
         
-        socket.emit('message',{
+        /* socket.emit('message',{
             username:userName,
             text:currentText,
             date: new Date()
-        })
+        }) */
         
         
         setCurrentText("");
         textbox.value="";
-        
 
-        
-        
-       
     }
     
    
 
     return (
 
-        <div>
+        <div id="chatbox">
             <NavBar userName={userName}/>
             <div className="main">
                 <div className="container ">
